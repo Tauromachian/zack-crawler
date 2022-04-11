@@ -60,7 +60,9 @@ export default {
     async getPage() {
       let response;
       try {
-        response = await fetch(this.url);
+        response = await fetch(this.url, {
+          mode: "no-cors",
+        });
         this.message.text = "Success";
         this.message.success = true;
       } catch (error) {
