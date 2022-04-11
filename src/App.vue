@@ -36,8 +36,6 @@ export default {
   data() {
     return {
       url: "",
-      response: "",
-      status: 200,
       message: { text: "", status: "", success: true, active: false },
     };
   },
