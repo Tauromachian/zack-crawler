@@ -20,6 +20,7 @@
     <app-card v-if="message.active" class="container my-5 w-full h-full mx-5">
       <div>Status: {{ message.text }} Response: {{ message.status }}</div>
       <iframe
+        sandbox
         :key="refreshIframe"
         v-if="message.success"
         class="w-full h-full"
