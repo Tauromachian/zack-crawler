@@ -37,6 +37,8 @@ export default {
     return {
       url: "",
       response: "",
+      status: 200,
+      message: { text: "", status: "", success: true, active: false },
     };
   },
   methods: {
@@ -44,10 +46,14 @@ export default {
       let response;
       try {
         response = await fetch(this.url);
-        this.response = response;
+        this.message.text = "Success";
+        this.message.success = true;
       } catch (error) {
-        this.response = response;
+        this.message.text = "Error";
+        this.message.success = false;
       }
+      this.message.status = response.status;
+      this.message.active = true;
     },
   },
 };
