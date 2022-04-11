@@ -15,6 +15,16 @@
         </button>
       </div>
     </div>
+    <div>Status: {{ status }} Response: {{ response }}</div>
+    <iframe
+      v-if="message.active && message.success"
+      :src="url"
+      name="targetframe"
+      allowTransparency="true"
+      scrolling="no"
+      frameborder="0"
+    >
+    </iframe>
   </div>
 </template>
 
