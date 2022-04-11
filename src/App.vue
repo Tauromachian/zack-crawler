@@ -7,6 +7,7 @@
       <base-input label="URL" v-model="url"></base-input>
       <div class="flex">
         <button
+          @click="getPage"
           type="button"
           class="button inline-block px-6 py-2 text-2xs rounded shadow-md hover:shadow-lg active:shadow-lg mt-5"
         >
@@ -25,7 +26,19 @@ export default {
   data() {
     return {
       url: "",
+      response: "",
     };
+  },
+  methods: {
+    async getPage() {
+      let response;
+      try {
+        response = await fetch(this.url);
+        this.response = response;
+      } catch (error) {
+        this.response = response;
+      }
+    },
   },
 };
 </script>
