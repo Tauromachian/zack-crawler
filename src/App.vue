@@ -3,6 +3,19 @@
   <router-view />
 </template>
 
+<script>
+import BaseInput from "./components/BaseInput.vue";
+
+export default {
+  components: { BaseInput },
+  data() {
+    return {
+      url: "",
+    };
+  },
+};
+</script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
