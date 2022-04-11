@@ -36,6 +36,6 @@ body {
 }
 
 .button {
-  background-color: #42b983;
+  background-color: #96e6b3;
 }
 </style>
