@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center items-center h-screen">
     <div>
-      <h1>Crawler</h1>
+      <h1 class="text-5xl">Crawler</h1>
     </div>
     <app-card class="max-w-sm">
       <base-input label="URL" v-model="url"></base-input>
