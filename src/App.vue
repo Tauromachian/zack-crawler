@@ -6,7 +6,7 @@
     <app-card class="max-w-sm">
       <base-input label="URL" v-model="url"></base-input>
       <div class="flex">
-        <base-button @click="getPage">Button</base-button>
+        <base-button :loading="loading" @click="getPage">Button</base-button>
       </div>
     </app-card>
 
@@ -40,6 +40,7 @@ export default {
       url: "",
       message: { text: "", status: "", success: true, active: false },
       refreshIframe: 0,
+      loading: false,
     };
   },
   mounted() {
@@ -53,6 +54,7 @@ export default {
   methods: {
     async getPage() {
       let response;
+      this.loading = true;
       try {
         response = await fetch(this.url, {
           mode: "no-cors",
@@ -66,12 +68,13 @@ export default {
       this.message.status = response.status;
       this.message.active = true;
       this.refreshIframe++;
+      this.loading = false;
     },
   },
 };
 </script>
 
-<style lang="scss">
+<style>
 body {
   background-color: #f0fff8;
 }
