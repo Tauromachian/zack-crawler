@@ -59,6 +59,10 @@ export default {
         response = await fetch(this.url, {
           method: "POST",
           mode: "no-cors",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            // "Content-Type": "multipart/form-data",
+          },
           body: JSON.stringify({
             __EVENTTARGET: "lnkBrowseEmpty",
             __EVENTARGUMENT: "",
