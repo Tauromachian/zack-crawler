@@ -55,6 +55,25 @@ export default {
     async getPage() {
       let response;
       this.loading = true;
+
+      const pairs = {
+        __EVENTTARGET: "lnkBrowseEmpty",
+        __EVENTARGUMENT: "",
+        __VIEWSTATE:
+          "/wEPDwUKMTYwMzk5MTA4OA9kFgICAQ9kFhgCAQ8PFgIeBFRleHQFBkxvZyBJbmRkAgIPDxYCHgdFbmFibGVkaGRkAgUPDxYCHwFoZGQCBg8PFgIfAAUNTm90IExvZ2dlZCBJbmRkAgcPDxYCHwAFICAgSW5hY3RpdmUgaW4gUGFpZCBEZXRhaWwgU3lzdGVtZGQCCA8PFgIfAGVkZAIKDw8WAh8ABZkDUE8vRGV0J3MgbWFya2VkIGFzICdhY3RpdmUnIGluIHRoZSBQYWlkIERldGFpbCBTeXN0ZW0gbWF5IHNjaGVkdWxlIGluIGFkdmFuY2UgdXNpbmcgdGhpcyBwcm9ncmFtIGlmIHRoZSB5ZWFyIG9mIHRoZWlyIGFwcG9pbnRtZW50IGRhdGUgaXM6IDE5ODEgLSAyMDIwLjxiciAvPlRoZSAjIG9mIGhvdXJzIHRoYXQgY2FuIGJlIHNjaGVkdWxlZCBmb3IgZWFjaCByYW5rIHVzaW5nIHRoaXMgYXBwIGFyZSBjdXJyZW50bHk6IFBPL0RldDogODAgaG91cnMuIFNndDogMzIgaG91cnMuIEx0OiAzMiBob3Vycy48YnIgLz5QbGVhc2UgdmlldyB0aGUgZGlyZWN0aW9ucyA8YSBocmVmPSJmcm1EaXJlY3Rpb25zLmFzcHgiPiBoZXJlIDwvYT4gYW5kIG9uIHRoZSBQb3J0YWwgZm9yIGNvbXBsZXRlIGV4cGxhbmF0aW9uIG9mIHJ1bGVzLmRkAgsPZBYGAgEPZBYCAgEPDxYCHgdWaXNpYmxlaGRkAgUPDxYCHwJoZGQCBw8PFgIfAAUTICAgIFBhZ2U6IE1haW4gTWVudWRkAgwPDxYCHwFoZGQCDg8PFgIfAmhkZAIQDw8WAh8CaGRkAhQPDxYIHglCYWNrQ29sb3IKHB4LQm9yZGVyU3R5bGULKiVTeXN0ZW0uV2ViLlVJLldlYkNvbnRyb2xzLkJvcmRlclN0eWxlBB4LQm9yZGVyV2lkdGgbAAAAAAAA8D8BAAAAHgRfIVNCAmhkFgQCAQ8PFgIfAAUGTk9USUNFZGQCAw8PFgIfAAXZAU1lbWJlcnMgYXBwcm92ZWQgZm9yIHRlbGV3b3JrIG9yIHdpdGggYW4gYXBwcm92ZWQgY292aWQtMTkNCnJlYXNvbmFibGUgYWNjb21tb2RhdGlvbiBhcmUgbm90IHBlcm1pdHRlZCB0byBwYXJ0aWNpcGF0ZSBpbiBvZmYtZHV0eQ0KZW1wbG95bWVudCBvciB0aGUgcGFpZCBkZXRhaWwgcHJvZ3JhbSB1bnRpbCBzdWNoIHJlcXVlc3QvYXBwcm92YWwgaGFzIGJlZW4NCndpdGhkcmF3bi5kZGQmKMEaXUQbc4EOF7bXmKcvx8uMkz/xPoVWwtuSYcXzNg%3D%3D",
+        __VIEWSTATEGENERATOR: "3C18D2D0",
+        __EVENTVALIDATION:
+          "/wEdAAW+8o/FHrmTNyaCChcQXORw4IsXNaS72srkKEKfKITh/010wlQM8Fa2oZAXS6YymIav6Xmx/ranT48GGlnL+IEwqfbU8NPC0IdoChCieaJ3jO8Q9xlt4AZtjHjgVddKTnaMZ0J2HnQ0dzRe3L5LJdni",
+      };
+
+      const data = new URLSearchParams();
+
+      const keys = Object.keys(pairs);
+
+      keys.forEach((key) => {
+        data.append(key, pairs[key]);
+      });
+
       try {
         response = await fetch(this.url, {
           method: "POST",
@@ -63,15 +82,7 @@ export default {
             "Content-Type": "application/x-www-form-urlencoded",
             // "Content-Type": "multipart/form-data",
           },
-          body: JSON.stringify({
-            __EVENTTARGET: "lnkBrowseEmpty",
-            __EVENTARGUMENT: "",
-            __VIEWSTATE:
-              "%2FwEPDwUKMTYwMzk5MTA4OA9kFgICAQ9kFhgCAQ8PFgIeBFRleHQFBkxvZyBJbmRkAgIPDxYCHgdFbmFibGVkaGRkAgUPDxYCHwFoZGQCBg8PFgIfAAUNTm90IExvZ2dlZCBJbmRkAgcPDxYCHwAFICAgSW5hY3RpdmUgaW4gUGFpZCBEZXRhaWwgU3lzdGVtZGQCCA8PFgIfAGVkZAIKDw8WAh8ABZkDUE8vRGV0J3MgbWFya2VkIGFzICdhY3RpdmUnIGluIHRoZSBQYWlkIERldGFpbCBTeXN0ZW0gbWF5IHNjaGVkdWxlIGluIGFkdmFuY2UgdXNpbmcgdGhpcyBwcm9ncmFtIGlmIHRoZSB5ZWFyIG9mIHRoZWlyIGFwcG9pbnRtZW50IGRhdGUgaXM6IDE5ODEgLSAyMDIwLjxiciAvPlRoZSAjIG9mIGhvdXJzIHRoYXQgY2FuIGJlIHNjaGVkdWxlZCBmb3IgZWFjaCByYW5rIHVzaW5nIHRoaXMgYXBwIGFyZSBjdXJyZW50bHk6IFBPL0RldDogODAgaG91cnMuIFNndDogMzIgaG91cnMuIEx0OiAzMiBob3Vycy48YnIgLz5QbGVhc2UgdmlldyB0aGUgZGlyZWN0aW9ucyA8YSBocmVmPSJmcm1EaXJlY3Rpb25zLmFzcHgiPiBoZXJlIDwvYT4gYW5kIG9uIHRoZSBQb3J0YWwgZm9yIGNvbXBsZXRlIGV4cGxhbmF0aW9uIG9mIHJ1bGVzLmRkAgsPZBYGAgEPZBYCAgEPDxYCHgdWaXNpYmxlaGRkAgUPDxYCHwJoZGQCBw8PFgIfAAUTICAgIFBhZ2U6IE1haW4gTWVudWRkAgwPDxYCHwFoZGQCDg8PFgIfAmhkZAIQDw8WAh8CaGRkAhQPDxYIHglCYWNrQ29sb3IKHB4LQm9yZGVyU3R5bGULKiVTeXN0ZW0uV2ViLlVJLldlYkNvbnRyb2xzLkJvcmRlclN0eWxlBB4LQm9yZGVyV2lkdGgbAAAAAAAA8D8BAAAAHgRfIVNCAmhkFgQCAQ8PFgIfAAUGTk9USUNFZGQCAw8PFgIfAAXZAU1lbWJlcnMgYXBwcm92ZWQgZm9yIHRlbGV3b3JrIG9yIHdpdGggYW4gYXBwcm92ZWQgY292aWQtMTkNCnJlYXNvbmFibGUgYWNjb21tb2RhdGlvbiBhcmUgbm90IHBlcm1pdHRlZCB0byBwYXJ0aWNpcGF0ZSBpbiBvZmYtZHV0eQ0KZW1wbG95bWVudCBvciB0aGUgcGFpZCBkZXRhaWwgcHJvZ3JhbSB1bnRpbCBzdWNoIHJlcXVlc3QvYXBwcm92YWwgaGFzIGJlZW4NCndpdGhkcmF3bi5kZGQmKMEaXUQbc4EOF7bXmKcvx8uMkz%2FxPoVWwtuSYcXzNg%3D%3D",
-            __VIEWSTATEGENERATOR: "3C18D2D0",
-            __EVENTVALIDATION:
-              "%2FwEdAAW%2B8o%2FFHrmTNyaCChcQXORw4IsXNaS72srkKEKfKITh%2F010wlQM8Fa2oZAXS6YymIav6Xmx%2FranT48GGlnL%2BIEwqfbU8NPC0IdoChCieaJ3jO8Q9xlt4AZtjHjgVddKTnaMZ0J2HnQ0dzRe3L5LJdni",
-          }),
+          body: data,
         });
         this.message.text = "Success";
         this.message.success = true;
